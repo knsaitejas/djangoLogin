@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login and Reg | Home</title>
+	<link rel="stylesheet" type="text/css" href="../static/css.css">
+</head>
+<body>
+	<h3>Registration</h3>
+	{% if messages %}
+	{% for message in messages %}
+		<p>{{message}}</p>
+	{%endfor%}
+	{%endif%}
+	<form action="/process" method="post">
+		{% csrf_token %}
+		First name: <input type="text" name="first_name">
+		Last name: <input type="text" name="last_name">
+		Email: <input type="text" name="email">
+		Password: <input type="password" name="password">
+		Confirm pw: <input type="password" name="password2">
+		<input type="submit" name="submit" value="Register" class="button">
+	</form>
+	<h3>Registration</h3>
+	<form action="/login" method="post">
+		{% csrf_token %}
+		Email <input type="text" name="email">
+		Password <input type="password" name="password">
+		<input type="submit" name="submit" value="Login" class="button">
+	</form>
+</body>
+</html>
